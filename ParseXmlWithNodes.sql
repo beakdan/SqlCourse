@@ -89,34 +89,4 @@ SELECT	ord.x.value('SalesOrderID[1]', 'INTEGER') AS SalesOrderID,
 		ord.x.value('Money[1]/@TotalDue', 'MONEY') AS TotalDue,
 		ord.x.value('Person[1]/@FirstName', 'NVARCHAR(50)') AS FirstName,
 		ord.x.value('Person[1]/@LastName', 'NVARCHAR(50)') AS LastName
-FROM	@XmlData.nodes('/Orders/Order') ord(x)
-
-/*
-<Email Address="james9@adventure-works.com" ModifiedDate="2011-05-31T00:00:00" />
-<Order>
-  <SalesOrderID>43659</SalesOrderID>
-  <OrderDate>2011-05-31T00:00:00</OrderDate>
-  <Money TaxAmt="1971.5149" Freight="616.0984" TotalDue="23153.2339" />
-  <Money SubTotal="20565.6206" TaxAmt="1971.5149" Freight="616.0984" TotalDue="23153.2339" />
-  <Person FirstName="James" LastName="Hendergart">
-    <Email Address="james9@adventure-works.com" ModifiedDate="2011-05-31T00:00:00" />
-  </Person>
-</Order>
-
-
-OPENXML (@docId, '/Orders/Order')   
-WITH (
-	SalesOrderID	INTEGER			'SalesOrderID',
-	OrderDate		DATETIME		'OrderDate',
-	SubTotal		MONEY			'Money/@SubTotal',
-	TaxAmt			MONEY			'Money/@TaxAmt',
-	Freight			MONEY			'Money/@Freight',
-	TotalDue		MONEY			'Money/@TotalDue',
-	FirstName		NVARCHAR(50)	'Person/@FirstName',
-	LastName		NVARCHAR(50)	'Person/@LastName',
-	EmailAddress		NVARCHAR(50)	'Person/Email/@Address',
-	EmailModifiedDate	DATETIME		'Person/Email/@ModifiedDate'
-)
-
-EXECUTE sp_xml_removedocument @docId;  
-*/
+FROM	@XmlData.nodes('/Orders/Order') ord(x);

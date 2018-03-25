@@ -77,6 +77,7 @@ DECLARE @XmlData AS XML = N'<Orders>
     <Money SubTotal="35944.1562" TaxAmt="3461.7654" Freight="1081.8017" TotalDue="40487.7233" />
     <Person FirstName="Ryan" LastName="Calafato">
       <Email Address="ryan1@adventure-works.com" ModifiedDate="2011-05-31T00:00:00" />
+      <Email Address="ryan1@gmail.com" ModifiedDate="2011-05-31T00:00:00" />
     </Person>
   </Order>
 </Orders>';

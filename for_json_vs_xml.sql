@@ -58,4 +58,4 @@ SELECT
 	)-- Person
 FROM
 	Sales.SalesOrderHeader soh
-FOR XML PATH('Order'), ROOT('Orders')
+FOR XML PATH('Order'), ROOT('Orders') --, XMLSCHEMA

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified"
+		elementFormDefault="qualified"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Orders">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Order" type="OrderType" maxOccurs="unbounded" minOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MoneyType">
+		<xs:attribute type="xs:float" name="SubTotal" use="required"/>
+		<xs:attribute type="xs:float" name="TaxAmt" use="required"/>
+		<xs:attribute type="xs:float" name="Freight" use="required"/>
+		<xs:attribute type="xs:float" name="TotalDue" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="EmailType">
+		<xs:attribute type="EmailAddress" name="Address" use="required"/>
+		<xs:attribute type="xs:dateTime" name="ModifiedDate" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PersonType">
+		<xs:sequence>
+			<xs:element type="EmailType" name="Email" minOccurs="0" maxOccurs="10" />
+		</xs:sequence>
+		<xs:attribute name="FirstName" use="required" type="NameRestriction" />
+		<xs:attribute name="LastName" use="required" type="NameRestriction" />
+		<xs:attribute name="MiddleName" use="optional" type="NameRestriction" />
+	</xs:complexType>
+	<xs:complexType name="OrderType">
+		<xs:sequence>
+			<xs:element type="xs:int" name="SalesOrderID" minOccurs="1" maxOccurs="1"/>
+			<xs:element type="xs:dateTime" name="OrderDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element type="MoneyType" name="Money" minOccurs="1" maxOccurs="1"/>
+			<xs:element type="PersonType" name="Person" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="NameRestriction">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EmailAddress">
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".+@.+\..+" />
+			<xs:maxLength value="50" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

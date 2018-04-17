@@ -1,3 +1,6 @@
+DROP TABLE dbo.Person;
+DROP TABLE dbo.Person_Hist;
+
 --Create a copy of Person table for testing purposes
 SELECT	BusinessEntityID, PersonType, NameStyle, Title, FirstName, MiddleName, LastName
 INTO	dbo.Person
